@@ -120,10 +120,6 @@ const clean = () => {
   return del('build');
 };
 
-const build = gulp.series(clean, svgo, copy, css, sprite, js, pugToHtml);
-
-const start = gulp.series(build, syncserver);
-
 // Optional tasks
 //---------------------------------
 // Вызывайте через 'npm run taskName'
@@ -135,13 +131,17 @@ const createWebp = () => {
 };
 
 const optimizeImages = () => {
-  return gulp.src('build/img/**/*.{png,jpg}')
+  return gulp.src('source/img/**/*.{png,jpg}')
     .pipe(imagemin([
       imagemin.optipng({ optimizationLevel: 3 }),
       imagemin.mozjpeg({ quality: 75, progressive: true }),
     ]))
-    .pipe(gulp.dest('build/img'));
+    .pipe(gulp.dest('source/img'));
 };
+
+const build = gulp.series(clean, optimizeImages, createWebp, svgo, sprite, copy, css, js, pugToHtml);
+
+const start = gulp.series(build, syncserver);
 
 exports.build = build;
 exports.start = start;
