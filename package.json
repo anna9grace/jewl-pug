@@ -55,6 +55,6 @@
     "duplicate-package-checker-webpack-plugin": "3.0.0"
   },
   "engines": {
-    "node": "12.18.2"
+    "node": "12.22.6"
   }
 }
