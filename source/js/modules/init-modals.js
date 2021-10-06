@@ -1,14 +1,12 @@
 import {setupModal} from '../utils/modal';
 
 const modals = document.querySelectorAll('.modal');
-const modalFeedback = document.querySelector('.modal--feedback');
-const modalFeedbackBtns = document.querySelectorAll('[data-modal="feedback"]');
-const modalSuccess = document.querySelector('.modal--success');
-const modalSuccessBtns = document.querySelectorAll('[data-modal="success"]');
+const modalLogin = document.querySelector('.modal--login');
+const modalLoginBtns = document.querySelectorAll('[data-modal="login"]');
+const modalAddToCart = document.querySelector('.modal--add-to-cart');
+const modalAddToCartBtns = document.querySelectorAll('[data-modal="add-to-cart"]');
 
-// аргументы setupModal(modal, closeCallback, modalBtns, openCallback, noPrevDefault, preventScrollLock)
-// возможна инициализация только с первыми аргументом,
-// если вам нужно открывать модалку в другом месте под какими-нибудь условиями
+
 const initModals = () => {
   // фикс для редких случаев, когда модалка появляется при загрузке страницы
   window.addEventListener('load', () => {
@@ -21,11 +19,11 @@ const initModals = () => {
     }
   });
 
-  if (modalFeedback && modalFeedbackBtns.length) {
-    setupModal(modalFeedback, false, modalFeedbackBtns, false, false);
+  if (modalLogin && modalLoginBtns.length) {
+    setupModal(modalLogin, false, modalLoginBtns, false, false);
   }
-  if (modalSuccess && modalSuccessBtns.length) {
-    setupModal(modalSuccess, false, modalSuccessBtns);
+  if (modalAddToCart && modalAddToCartBtns.length) {
+    setupModal(modalAddToCart, false, modalAddToCartBtns);
   }
 };
 

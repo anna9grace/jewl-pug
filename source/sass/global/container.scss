@@ -1,24 +1,18 @@
 .container {
-  width: 100%;
-  max-width: 1920px;
-  margin: 0 auto;
-  padding: 0 40px;
+  width: 85.58vw;
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-  @include viewport--lg {
-    padding: 0 32px;
+@media (max-width: $max-tablet-width) {
+  .container {
+    width: 88.28vw;
   }
+}
 
-  @include viewport--md {
-    padding: 0 24px;
-  }
-
-  @include viewport--sm {
-    padding: 0 16px;
-  }
-
-  &--no-padding {
-    @include viewport--sm {
-      padding: 0;
-    }
+@media (max-width: $max-mobile-width) {
+  .container {
+    width: 90.63vw;
   }
 }

@@ -1,2 +1,7 @@
 mixin img(path, image, format, width, height, altText)
   img(src="img/" + path + "/" + image + "." + format, srcset= "img/" + path + "/" + image + "@2x." + format + " 2x", width= width, height= height, alt= altText)
+
+mixin imgExtended(path, image, format, width, height, altText)
+  picture
+    source(type="image/webp", srcset="./img/" + path + "/" + image + "-1x." + "webp 1x," + "./img/" + path + "/" + image + "-2x.webp 2x")
+    img(src="img/" + path + "/" + image + "-1x." + format, srcset= "img/" + path + "/" + image + "-2x." + format + " 2x", width= width, height= height, alt= altText)

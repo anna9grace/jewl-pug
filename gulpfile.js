@@ -18,53 +18,53 @@ const cached = require('gulp-cached');
 
 const pugToHtml = () => {
   return gulp.src('source/pug/pages/*.pug')
-      .pipe(plumber())
-      .pipe(pug({ pretty: true }))
-      .pipe(cached('pug'))
-      .pipe(gulp.dest('build'));
+    .pipe(plumber())
+    .pipe(pug({ pretty: true }))
+    .pipe(cached('pug'))
+    .pipe(gulp.dest('build'));
 };
 
 const css = () => {
   return gulp.src('source/sass/style.scss')
-      .pipe(plumber())
-      .pipe(sourcemap.init())
-      .pipe(sass())
-      .pipe(postcss([autoprefixer({
-        grid: true,
-      })]))
-      .pipe(gulp.dest('build/css'))
-      .pipe(csso())
-      .pipe(rename('style.min.css'))
-      .pipe(sourcemap.write('.'))
-      .pipe(gulp.dest('build/css'))
-      .pipe(server.stream());
+    .pipe(plumber())
+    .pipe(sourcemap.init())
+    .pipe(sass())
+    .pipe(postcss([autoprefixer({
+      grid: true,
+    })]))
+    .pipe(gulp.dest('build/css'))
+    .pipe(csso())
+    .pipe(rename('style.min.css'))
+    .pipe(sourcemap.write('.'))
+    .pipe(gulp.dest('build/css'))
+    .pipe(server.stream());
 };
 
 const js = () => {
   return gulp.src(['source/js/main.js'])
-      .pipe(webpackStream(webpackConfig))
-      .pipe(gulp.dest('build/js'))
+    .pipe(webpackStream(webpackConfig))
+    .pipe(gulp.dest('build/js'))
 };
 
 const svgo = () => {
   return gulp.src('source/img/**/*.{svg}')
-      .pipe(imagemin([
-        imagemin.svgo({
-            plugins: [
-              {removeViewBox: false},
-              {removeRasterImages: true},
-              {removeUselessStrokeAndFill: false},
-            ]
-          }),
-      ]))
-      .pipe(gulp.dest('source/img'));
+    .pipe(imagemin([
+      imagemin.svgo({
+        plugins: [
+          { removeViewBox: false },
+          { removeRasterImages: true },
+          { removeUselessStrokeAndFill: false },
+        ]
+      }),
+    ]))
+    .pipe(gulp.dest('source/img'));
 };
 
 const sprite = () => {
-  return gulp.src('source/img/sprite/*.svg')
-      .pipe(svgstore({inlineSvg: true}))
-      .pipe(rename('sprite_auto.svg'))
-      .pipe(gulp.dest('build/img'));
+  return gulp.src(`source/img/icon_*.svg`)
+    .pipe(svgstore({ inlineSvg: true }))
+    .pipe(rename('sprite_auto.svg'))
+    .pipe(gulp.dest('build/img'));
 };
 
 const syncserver = () => {
@@ -90,13 +90,13 @@ const refresh = (done) => {
 };
 
 const copysvg = () => {
-  return gulp.src('source/img/**/*.svg', {base: 'source'})
-      .pipe(gulp.dest('build'));
+  return gulp.src('source/img/**/*.svg', { base: 'source' })
+    .pipe(gulp.dest('build'));
 };
 
 const copypngjpg = () => {
-  return gulp.src('source/img/**/*.{png,jpg}', {base: 'source'})
-      .pipe(gulp.dest('build'));
+  return gulp.src('source/img/**/*.{png,jpg}', { base: 'source' })
+    .pipe(gulp.dest('build'));
 };
 
 const copy = () => {
@@ -104,6 +104,7 @@ const copy = () => {
     'source/fonts/**',
     'source/favicon/**',
     'source/img/**',
+    'source/css/**',
     'source/data/**',
     'source/file/**',
     'source/*.php',
@@ -112,7 +113,7 @@ const copy = () => {
   ], {
     base: 'source',
   })
-      .pipe(gulp.dest('build'));
+    .pipe(gulp.dest('build'));
 };
 
 const clean = () => {
@@ -129,17 +130,17 @@ const start = gulp.series(build, syncserver);
 
 const createWebp = () => {
   return gulp.src('source/img/**/*.{png,jpg}')
-      .pipe(webp({quality: 90}))
-      .pipe(gulp.dest('source/img'));
+    .pipe(webp({ quality: 90 }))
+    .pipe(gulp.dest('source/img'));
 };
 
 const optimizeImages = () => {
   return gulp.src('build/img/**/*.{png,jpg}')
-      .pipe(imagemin([
-        imagemin.optipng({optimizationLevel: 3}),
-        imagemin.mozjpeg({quality: 75, progressive: true}),
-      ]))
-      .pipe(gulp.dest('build/img'));
+    .pipe(imagemin([
+      imagemin.optipng({ optimizationLevel: 3 }),
+      imagemin.mozjpeg({ quality: 75, progressive: true }),
+    ]))
+    .pipe(gulp.dest('build/img'));
 };
 
 exports.build = build;

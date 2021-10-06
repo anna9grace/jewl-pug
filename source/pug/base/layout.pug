@@ -7,19 +7,22 @@ block data
 block variables
 
 doctype html
-html(lang="ru")
+html.page(lang="ru")
   head
-    title= title
+    title Jewellery
     meta(charset="utf-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
-    meta(name="description", content="Project Name - описание")
+    meta(name="Description", content="Jewellerry of solid gold, silver or leather with delivery around the world")
     //- генерируйте favicon тут - https://realfavicongenerator.net/
     //- в подключение фавикон манифеста обязательно добавьте строчки crossorigin="use-credentials"
 
     //- используйте только для шрифта находящегося на первом экране
-    //- link(rel="preload", href="fonts/placeholder.woff2", as="font", crossorigin="anonymous")
     link(rel="stylesheet", href="css/style.min.css")
+    link(rel="preload", href="fonts/poppins-regular.woff2", as="font", crossorigin="anonymous")
+    link(rel="preload", href="fonts/poppins-medium.woff2", as="font", crossorigin="anonymous")
+    link(rel="preload", href="fonts/poppins-bold.woff2", as="font", crossorigin="anonymous")
+    link(rel="preload", href="fonts/cormorant_garamond-bold.woff2", as="font", crossorigin="anonymous")
 
   body
     +sprite()

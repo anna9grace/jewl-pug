@@ -1,0 +1,10 @@
+mixin modal-login()
+  form.login-form(action="https://echo.htmlacademy.ru", method="post")
+    h2 Log In
+    +input("email", "email", "login-email", "Your E-mail", false, true, false, true, "Your E-mail")
+    +input("password", "password", "login-password", "Your password", false, true, false, true, "Password")
+
+    a(href="#") Forgot your password?
+    button.btn.btn--dark(type="submit") Log In
+    p Don’t have an account?
+      a(href="#") Sign up

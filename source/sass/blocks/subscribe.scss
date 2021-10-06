@@ -1,0 +1,86 @@
+.subscribe {
+  @include font-sizes(16px, 21px);
+
+  p {
+    margin-top: 9px;
+    margin-bottom: 33px;
+    color: $main-color-medium;
+  }
+}
+
+.subscribe__form {
+  display: flex;
+  border-bottom: 1px solid $main-color-light;
+  transition: background-color $default-transition-settings;
+
+  &:hover {
+    background-color: transparentize($main-color-light, 0.95);
+  }
+
+  &:focus-within {
+    background-color: transparentize($main-color-light, 0.9);
+
+    input {
+      outline: none;
+    }
+  }
+
+  input {
+    flex-grow: 1;
+    height: 40px;
+    width: 100px;
+    padding: 9px 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: $main-color-light;
+    background-color: transparent;
+    border: none;
+
+    &::placeholder {
+      font-family: inherit;
+      font-size: inherit;
+      color: $main-color-medium;
+    }
+  }
+
+  button {
+    min-width: 87px;
+    padding: 0 13px;
+    color: inherit;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: color $default-transition-settings,
+      opacity $default-transition-settings;
+
+    &:hover,
+    &:focus-within {
+      color: transparentize($main-color-light, 0.4);
+      outline: none;
+    }
+
+    &:active {
+      opacity: 0.7;
+    }
+  }
+
+  &::after {
+    @include sizes(29px, 9px);
+    content: "";
+    flex-shrink: 0;
+    align-self: center;
+    background: url("../img/arrow.svg") center center no-repeat;
+  }
+}
+
+@media (max-width: $max-mobile-width) {
+  .subscribe {
+    p {
+      margin-top: 15px;
+    }
+
+    input {
+      width: 150px;
+    }
+  }
+}

@@ -1,0 +1,84 @@
+extends ../base/layout
+
+block data
+  include ../data/product-data
+
+block variables
+  - var title = "страница товара"
+  - var wrapperMod = ""
+  - var hasHeader = true
+  - var headerMod = ""
+  - var hasFooter = true
+  - var footerMod = ""
+  - var currentPage = "2" //- для остальных страниц пишем либо пустую строку, либо индекс
+
+block main
+  main
+    section.product-card.container
+      ul.product-card__gallery
+        each photo, index in productPhotos
+          li
+            +imgExtended(photo.path, photo.image, photo.format, photo.width, photo.height, photo.altText)
+
+      .product-card__gallery-indicator
+        p
+          span 1
+          span of
+          span 4
+      .product-card__info
+        h1 Gold Necklace
+        p $ 115
+        .product-card__info-switch
+          a(href="#") Description
+          a.current(href="#") Additional info
+        table.product-card__description
+          tr
+            th Metal type
+            td Gold 585
+          tr
+            th Stone
+            td Turquoise
+          tr
+            th Size
+            td 18” / 20”
+
+      .product-card__add
+        a.btn.btn--dark(href="added-to-cart.html", data-modal="add-to-cart") Add to cart
+        p
+          span 14 Day Returns
+          span 2-Year Warranty
+          span Free Shipping
+
+    section.more-products.container
+      h2 You May Also Like
+      a(href="catalog.html") Shop Now
+
+      .js-slider.new-in__slider#products-slider
+        ul.more-products__list.swiper-wrapper
+          each product, index in moreProducts
+            li.swiper-slide
+              a.product(href="product-card.html")
+                +imgExtended(product.path, product.image, product.format, product.width, product.height, product.alt)
+                p= product.title
+                  span= product.price
+
+        .pagination.pagination--new
+          button.pagination__btn.pagination__btn--prev.js-slider__prev-btn
+            span.visually-hidden Previous
+            +icon("icon_arrow-prev", 30, 11)
+
+          ul.pagination__links.js-slider__pagination
+            each product, index in moreProducts
+              li.js-slider__bullet(class=`${index === 0 ? "current" : ""}`)
+                span(tabindex="0") #{`${index + 1}`}
+
+          button.pagination__btn.pagination__btn--next.js-slider__next-btn
+            span.visually-hidden Next
+            +icon("icon_arrow-next", 30, 11)
+
+block modals
+  +modal("modal--login")
+    +modal-login()
+
+  +modal("modal--add-to-cart")
+    +modal-add-to-cart()

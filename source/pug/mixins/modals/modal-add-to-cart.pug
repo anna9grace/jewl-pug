@@ -1,0 +1,61 @@
+mixin modal-add-to-cart()
+  .added-to-cart
+    h2(tabindex="1") The item was added to&nbsp;your cart
+    .added-to-cart__item
+      +imgExtended("", "necklace-big-card-modal", "jpg", "84", "79", "Photo of jewellery to buy")
+      div
+        b Gold Necklace
+        p $ 115
+
+      .added-to-cart__count
+        button(tabindex="1")
+          span(class="visually-hidden") Add unit
+        span 1
+        button(tabindex="1")
+          span(class="visually-hidden") Remove unit
+    .added-to-cart__total
+      p
+        span You have
+        span 1
+        span item in the cart
+      p Cart subtotal:&thinsp;
+        span $ 115
+    p
+      a.btn(href="catalog.html", tabindex="1") Continue shopping
+      a.btn.btn--dark(href="shopping-cart.html", tabindex="1") Checkout
+
+
+//-     <div class="modal__wrapper added-to-cart">
+//-       <button class="modal__close-btn" tabindex="2">
+//-         <span class="visually-hidden">Close</span>
+//-       </button>
+//-       <h2 tabindex="1">The item was added to&nbsp;your cart</h2>
+//-       <div class="added-to-cart__item">
+//-         <picture>
+//-           <!-- 1х: 84x79px; 2x: 168x158px -->
+//-           <source type="image/webp"
+//-               srcset="./img/necklace-big-card-modal-1x.webp 1x, ./img/necklace-big-card-modal-2x.webp 2x">
+//-           <!-- 1х: 84x79px; 2x: 168x158px -->
+//-           <img src="./img/necklace-big-card-modal-1x.jpg" alt="Photo of jewellery to buy" width="84" height="79"
+//-             srcset="./img/necklace-big-card-modal-2x.jpg 2x">
+//-         </picture>
+//-         <div>
+//-           <b>Gold Necklace</b>
+//-           <p>$ 115</p>
+//-         </div>
+//-         <div class="added-to-cart__count">
+//-           <button tabindex="1"><span class="visually-hidden">Add unit</span></button>
+//-           <span>1</span>
+//-           <button tabindex="1"><span class="visually-hidden">Remove unit</span></button>
+//-         </div>
+//-       </div>
+//-       <div class="added-to-cart__total">
+//-         <p>You have <span>1</span> item in the cart</p>
+//-         <p>Cart subtotal:&thinsp;<span>$ 115</span></p>
+//-       </div>
+//-       <p>
+//-         <a class="btn" href="catalog.html" tabindex="1">Continue shopping</a>
+//-         <a class="btn btn--dark" href="shopping-cart.html" tabindex="1">Checkout</a>
+//-       </p>
+//-     </div>
+//-   </div>

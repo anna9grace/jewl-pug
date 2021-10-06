@@ -1,0 +1,110 @@
+.login-form {
+  @include font-sizes(14px, 21px);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px 45px 38px 45px;
+  font-weight: 500;
+  color: $main-color-medium;
+  background-color: $bg-color-light;
+
+  h2 {
+    @include font-sizes(34px, 44px);
+    font-family: $secondary-font-family;
+    font-weight: 700;
+    color: $main-color-dark;
+  }
+
+  input {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid $main-color-dark;
+    transition: color $default-transition-settings,
+      border-color $default-transition-settings,
+      background-color $default-transition-settings;
+
+    &:not(:last-of-type) {
+      margin-bottom: 30px;
+    }
+
+    &::placeholder {
+      font-family: inherit;
+      color: inherit;
+    }
+
+    &:hover {
+      color: $accent-color;
+      border-color: $accent-color;
+    }
+
+    &:active,
+    &:focus {
+      background-color: transparentize($accent-color, 0.8);
+      outline: none;
+    }
+  }
+
+  button {
+    margin-top: 45px;
+    cursor: pointer;
+  }
+
+  a {
+    text-align: right;
+    transition: color $default-transition-settings,
+      opacity $default-transition-settings;
+
+    &:hover,
+    &:focus {
+      color: $accent-color;
+      outline: none;
+    }
+
+    &:active {
+      opacity: 0.7;
+    }
+  }
+}
+
+.logi-form > a {
+  @include font-sizes(12px, 18px);
+  align-self: flex-end;
+  margin-top: 5px;
+}
+
+.login-form > * > a {
+  margin-left: 8px;
+  margin-right: 5px;
+  color: $main-color-dark;
+}
+
+@media (max-width: $max-tablet-width) {
+  .login-form {
+    padding: 20px 51px 42px;
+  }
+}
+
+@media (max-width: $max-mobile-width) {
+  .login-form {
+    padding: 18px 15px 25px;
+
+    h2 {
+      @include font-sizes(24px, 31px);
+    }
+
+    input:not(:last-of-type) {
+      margin-bottom: 26px;
+    }
+
+    button {
+      margin-top: 35px;
+    }
+
+    a {
+      font-size: 12px;
+      line-height: 18px;
+    }
+  }
+}

@@ -1,0 +1,159 @@
+.gallery {
+  padding-top: 81px;
+  padding-bottom: 131px;
+  letter-spacing: 1px;
+  text-align: center;
+
+  h2 {
+    margin-bottom: 32px;
+  }
+
+  a {
+    display: inline-block;
+    padding-bottom: 5px;
+    vertical-align: middle;
+    border-bottom: 1px solid $accent-color;
+    transition: color $default-transition-settings,
+      opacity $default-transition-settings;
+
+    &:hover,
+    &:focus {
+      color: $accent-color;
+      outline: none;
+    }
+
+    &:active {
+      opacity: 0.7;
+    }
+  }
+}
+
+.gallery__wrapper {
+  display: flex;
+  justify-content: space-between;
+  height: 30.31vw;
+  max-height: 414px;
+  margin-top: 59px;
+
+  img {
+    width: 100%;
+    min-height: 100%;
+  }
+}
+
+.gallery__list {
+  @include list-reset();
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+
+  li {
+    overflow: hidden;
+  }
+}
+
+.gallery__list:first-of-type {
+  width: 56.29%;
+
+  li {
+    width: 34.9%;
+
+    &:last-of-type {
+      height: 100%;
+      width: 60.7%;
+      align-self: flex-end;
+    }
+  }
+}
+
+.gallery__list:last-of-type {
+  width: 41.06%;
+
+  li {
+    width: 45.42%;
+  }
+
+  li:first-of-type,
+  li:last-of-type {
+    width: 48.33%;
+  }
+
+  li:last-of-type,
+  li:nth-last-of-type(2) {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: $max-tablet-width) {
+  .gallery {
+    padding-top: 47px;
+    padding-bottom: 81px;
+
+    h2 {
+      margin-bottom: 19px;
+    }
+  }
+
+  .gallery__wrapper {
+    height: 31.4vw;
+  }
+}
+
+@media (max-width: $max-mobile-width) {
+  .gallery {
+    padding-top: 31px;
+    padding-bottom: 72px;
+
+    h2 {
+      margin-bottom: 20px;
+    }
+  }
+
+  .gallery__wrapper {
+    flex-direction: column;
+    height: auto;
+    max-height: max-content;
+    margin-top: 47px;
+
+    .gallery__list {
+      width: 100%;
+    }
+
+    img {
+      object-fit: cover;
+    }
+  }
+
+  .gallery__list:first-of-type {
+    height: 72.63vw;
+
+    li {
+      width: 44.83%;
+
+      &:last-of-type {
+        width: 50%;
+        margin-bottom: 2.34vw;
+      }
+    }
+  }
+
+  .gallery__list:last-of-type {
+    flex-direction: row-reverse;
+    margin-top: 2.34vw;
+
+    li {
+      width: 44.83%;
+      margin-top: auto;
+    }
+
+    li:first-of-type {
+      width: 50%;
+    }
+
+    li:last-of-type,
+    li:nth-last-of-type(2) {
+      display: none;
+    }
+  }
+}

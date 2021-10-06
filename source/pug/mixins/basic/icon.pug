@@ -1,3 +1,7 @@
-mixin icon(name, width, height)
-  svg(width=width, height=height, aria-hidden="true")
-    use(xlink:href="#" + name)
+mixin icon(name, width, height, viewbox)
+  if viewbox
+    svg(width=width, height=height, aria-hidden="true", viewbox=`${viewbox}`)
+      use(xlink:href="#" + name)
+  else
+    svg(width=width, height=height, aria-hidden="true")
+      use(xlink:href="#" + name)

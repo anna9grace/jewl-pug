@@ -10,7 +10,7 @@
   flex-direction: column;
   overflow-y: auto;
 
-  background-color: rgba($color-default-black, 0.6);
+  background-color: rgba($main-color-extra-dark, 0.6);
   transform: scale(1.2);
   visibility: hidden;
   opacity: 0;
@@ -38,7 +38,7 @@
     min-height: 100%;
     padding: 60px 40px;
 
-    @include viewport--sm {
+    @media (max-width: $max-mobile-width) {
       padding: 60px 16px;
     }
   }
@@ -56,22 +56,36 @@
 
   &__content {
     position: relative;
-
     width: 600px;
-    padding: 40px;
 
-    background-color: $color-default-white;
-
-    @include viewport--sm {
+    @media (max-width: $max-mobile-width) {
       width: 100%;
       padding: 20px;
     }
   }
 
   &__close-btn {
+    @include sizes(35px, 35px);
     position: absolute;
     top: 15px;
     right: 15px;
+    margin-left: auto;
+    padding: 5px;
+
+    border: none;
+    cursor: pointer;
+    transition: background-color $default-transition-settings,
+      opacity $default-transition-settings;
+
+    &:hover,
+    &:focus {
+      background-color: $accent-color;
+      outline: none;
+    }
+
+    &:active {
+      opacity: 0.7;
+    }
   }
 
   &--responsive {
@@ -84,7 +98,7 @@
     .modal__content {
       width: auto;
 
-      @include viewport--sm {
+      @media (max-width: $max-mobile-width) {
         width: 100%;
       }
     }
@@ -103,5 +117,38 @@
     visibility: visible;
     opacity: 1;
     pointer-events: auto;
+  }
+}
+
+.modal--login {
+  .modal__content {
+    width: 430px;
+    padding-top: 138px;
+    background: $bg-color-light url("../img/bg-login-1x.jpg") top center no-repeat;
+    background-size: contain;
+
+    @media (max-resolution: 2dppx) {
+      background-image: url("../img/bg-login-2x.jpg");
+    }
+
+    @media (max-width: $max-tablet-width) {
+      width: 442px;
+    }
+
+    @media (max-width: $max-mobile-width) {
+      width: 100%;
+      padding: 84px 0 0 0;
+    }
+  }
+}
+
+.modal--add-to-cart {
+  .modal__content {
+    width: 500px;
+
+    @media (max-width: $max-mobile-width) {
+      width: 290px;
+      padding: 0;
+    }
   }
 }

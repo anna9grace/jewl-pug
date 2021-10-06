@@ -3,33 +3,75 @@ mixin header(headerMod, currentPage)
     var headerLinks = [
       {
         href: "#",
-        text: "Страница 1"
+        text: "What's new"
       },
       {
         href: "#",
-        text: "Страница 2"
+        text: "Chokers"
       },
       {
         href: "#",
-        text: "Страница 3"
+        text: "Necklaces"
+      },
+      {
+        href: "#",
+        text: "Rings"
+      },
+      {
+        href: "#",
+        text: "Earrings"
       },
     ]
 
-  header(class=(headerMod) ? "header header--" + headerMod : "header")
-    .header__wrapper
+  -
+    var headerInfoLinks = [
+      {
+        href: "#",
+        text: "About CH"
+      },
+      {
+        href: "#",
+        text: "Stores & Hours"
+      },
+      {
+        href: "#",
+        text: "Contact Us"
+      },
+    ]
+
+
+  header(class=(headerMod) ? "page-header page-header--" + headerMod : "page-header")
+    .page-header__wrapper.container
+      form.page-header__search(action="#", method="GET")
+        +icon("icon_search", 16, 14, '0 0 16 14')
+        label.visually-hidden(for="search-field") Search field
+        input(type="search", name="search", id="search-field", placeholder="Type here to search")
+      button.page-header__menu-btn.hidden(type="button")
+        span.visually-hidden Show menu
+        +icon("icon_hamburger", 25, 20)
+
       if(currentPage === "main")
-        a.header__logo Логотип
+        a.page-header__logo
+          +icon("icon_logo", 66, 66, '0 0 66 66')
       else
-        a.header__logo(href="main.html", aria-label="Переход на главную") Логотип
-      nav.main-nav
-        button.main-nav__toggle.btn-reset(type="button", aria-label="Переключатель отображения меню", aria-pressed="false")
-          +icon("icon-burger", 20, 20)
-        .main-nav__wrapper
-          ul.main-nav__list
-            each link, index in headerLinks
-              if(index === currentPage)
-                li
-                  a.main-nav__link.main-nav__link--active=link.text
-              else
-                li
-                  a.main-nav__link(href=link.href)=link.text
+        a.page-header__logo(href="main.html")
+          +icon("icon_logo", 66, 66, '0 0 66 66')
+
+      .page-header__user-links
+        a.page-header__login(href="#", data-modal="login") Login
+        a(href="shopping-cart.html")
+          p Cart&nbsp;
+            span 0
+          p(hidden)
+            +icon("icon_cart", 20, 21)
+
+      nav.page-header__nav
+        ul.page-header__nav-menu
+          each link, index in headerLinks
+            li
+              a(href=link.href)=link.text
+        ul.page-header__nav-info
+          each link, index in headerInfoLinks
+            li
+              a(href=link.href)=link.text
+        a(href="#", data-modal="login") Login

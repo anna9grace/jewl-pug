@@ -1,2 +1,90 @@
 mixin footer(footerMod)
-  footer(class= (footerMod) ? "footer footer--" + footerMod : "footer")
+  -
+    var footerLinks = [
+      {
+        href: "#",
+        text: "Ordering & Payment"
+      },
+      {
+        href: "#",
+        text: "Terms & Conditions"
+      },
+      {
+        href: "#",
+        text: "Returns & Exchanges"
+      },
+      {
+        href: "#",
+        text: "Delivery"
+      },
+      {
+        href: "#",
+        text: "About CH"
+      },
+      {
+        href: "#",
+        text: "Stores & Hours"
+      },
+      {
+        href: "#",
+        text: "Jobs"
+      },
+      {
+        href: "#",
+        text: "Contact Us"
+      },
+    ]
+
+  -
+    var socialLinks = [
+      {
+        href: "#",
+        name: "icon_fb",
+        text: "Facebook",
+        width: 15,
+        height: 17,
+      },
+      {
+        href: "#",
+        name: "icon_inst",
+        text: "Instagram",
+        width: 15,
+        height: 15,
+      },
+      {
+        href: "#",
+        name: "icon_pint",
+        text: "Pinterest",
+        width: 15,
+        height: 15,
+      },
+      {
+        href: "#",
+        name: "icon_tw",
+        text: "Twitter",
+        width: 15,
+        height: 13,
+      },
+    ]
+
+  footer(class= (footerMod) ? "page-footer page-footer--" + footerMod : "page-footer")
+    .page-footer__wrapper.container
+      section.page-footer__subscribe
+        h2 The good stuff in&nbsp;your inbox
+        p News and updates from CH. No&nbsp;spam, we promise.
+        form.subscribe__form(action="https://echo.htmlacademy.ru", method="post")
+            label.visually-hidden(for="customer-email") Your E-mail
+            input(type="email", name="email", id="customer-email", placeholder="Your E-mail", required)
+            button(type="submit") Sign Up
+
+      ul.page-footer__nav
+        each link, index in footerLinks
+          li
+            a(href=link.href)=link.text
+
+      ul.page-footer__socials
+        each link in socialLinks
+          li
+            a(href=link.href)
+              +icon(link.name, link.width, link.height)
+              span= link.text

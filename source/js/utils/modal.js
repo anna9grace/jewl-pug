@@ -55,6 +55,7 @@ const setupModal = (modal, closeCallback, modalBtns, openCallback, noPrevDefault
 
     modalBtns.forEach((btn) => {
       btn.addEventListener('click', (evt) => {
+        console.log('yy')
         if (!noPrevDefault) {
           evt.preventDefault();
         }

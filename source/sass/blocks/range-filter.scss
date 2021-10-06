@@ -1,0 +1,81 @@
+.range-filter {
+  position: relative;
+  padding-bottom: 50px;
+}
+
+.range-filter__scale {
+  @include sizes(100%, 1px);
+  background-color: $bg-color-light;
+}
+
+.range-filter__bar {
+  @include sizes(50%, 1px);
+  position: absolute;
+  right: 23%;
+  background-color: $accent-color;
+}
+
+.range-filter__toggle {
+  @include sizes(15px, 15px);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: -7.5px;
+  background-color: $accent-color;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color $default-transition-settings;
+
+  span {
+    width: max-content;
+    margin-top: 20px;
+  }
+
+  &--min {
+    left: 22%;
+  }
+
+  &--max {
+    right: 17%;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: lighten($accent-color, 10%);
+    outline: none;
+  }
+
+  &:active {
+    background-color: lighten($accent-color, 20%);
+  }
+}
+
+@media (max-width: $max-tablet-width) {
+  .range-filter {
+    padding-bottom: 70px;
+  }
+
+  .range-filter__toggle {
+    @include sizes(18px, 18px);
+    top: -9px;
+
+    &--min {
+      left: 15%;
+    }
+
+    &--max {
+      right: 21%;
+    }
+
+    span {
+      margin-top: 25px;
+    }
+  }
+}
+
+@media (max-width: $max-mobile-width) {
+  .range-filter {
+    padding-bottom: 60px;
+  }
+}

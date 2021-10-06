@@ -1,0 +1,281 @@
+.filters__form {
+  @include font-sizes(14px, 18px);
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+  font-weight: 500;
+  color: $main-color-dark;
+
+  h3 {
+    @include font-sizes(16px, 21px);
+    position: relative;
+    margin: 0;
+    padding: 23px 25px 22px;
+    cursor: pointer;
+    transition: color $default-transition-settings,
+      opacity $default-transition-settings;
+
+    &::after {
+      @include sizes(12px, 14px);
+      content: "";
+      position: absolute;
+      top: 30px;
+      right: 26px;
+      border-top: 1px solid $accent-color;
+      border-right: 1px solid $accent-color;
+      transform: skew(-10deg) rotate(-50deg);
+    }
+
+    &:hover,
+    &:focus {
+      color: $accent-color;
+      outline: none;
+    }
+
+    &:active {
+      opacity: 0.7;
+    }
+  }
+
+  fieldset {
+    margin: 0;
+    padding: 0;
+    border: 1px solid $accent-color;
+
+    &:not(:first-of-type) {
+      border-top: none;
+    }
+  }
+
+  button {
+    margin-top: 34px;
+    cursor: pointer;
+
+    &:last-of-type {
+      margin-top: 24px;
+    }
+  }
+}
+
+.filters__close-btn {
+  @include sizes(32px, 32px);
+  position: absolute;
+  display: none;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background: $main-color-extra-dark url("../img/close.svg") center center
+    no-repeat;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1;
+  transition: background-color $default-transition-settings;
+
+  &:hover,
+  &:focus {
+    background-color: $accent-color;
+    outline: none;
+  }
+
+  &:active {
+    background-color: lighten($accent-color, 20%);
+  }
+
+  &--mobile {
+    display: initial;
+  }
+}
+
+.filters__set {
+  display: flex;
+  flex-direction: column;
+  margin-left: 25px;
+  margin-right: 25px;
+
+  &--product,
+  &--material,
+  &--collection {
+    margin: 0 33px 28px 33px;
+  }
+
+  &--price {
+    margin-top: 5px;
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &:not(:last-of-type) {
+      margin-bottom: 12px;
+    }
+
+    &::before {
+      @include sizes(15px, 15px);
+      content: "";
+      flex-shrink: 0;
+      margin-right: 11px;
+      border: 1px solid $accent-color;
+      transition: background-color $default-transition-settings;
+    }
+  }
+
+  input:checked + label::before {
+    background-color: $accent-color;
+  }
+
+  input:hover + label::before,
+  input:focus + label::before {
+    background-color: transparentize($accent-color, 0.5);
+  }
+}
+
+.filters__closed {
+  .filters__set {
+    display: none;
+  }
+
+  h3 {
+    transition: color $default-transition-settings,
+      background-color $default-transition-settings;
+
+    &::after {
+      right: 22px;
+      transform: skew(-10deg) rotate(130deg);
+      transform-origin: center 17%;
+      transition: border-color $default-transition-settings;
+    }
+
+    &:hover,
+    &:focus {
+      color: $main-color-light;
+      background-color: $accent-color;
+
+      &::after {
+        border-color: $main-color-light;
+      }
+    }
+  }
+}
+
+@media (max-width: $max-tablet-width) {
+  .filters__form {
+    @include font-sizes(16px, 21px);
+    padding-bottom: 40px;
+
+    h3 {
+      @include font-sizes(18px, 23px);
+      padding: 34px 38px 23px;
+
+      &::after {
+        @include sizes(15px, 17px);
+        top: 41px;
+        right: 43px;
+      }
+    }
+
+    button {
+      margin: 39px 40px 0;
+    }
+
+    fieldset {
+      border: none;
+      border-bottom: 1px solid $accent-color;
+    }
+  }
+
+  .filters__close-btn.modal__close-btn {
+    top: 10px;
+    right: -439px;
+  }
+
+  .filters__set {
+    &--product,
+    &--material,
+    &--collection {
+      margin-right: 49px;
+      margin-left: 49px;
+    }
+
+    &--price {
+      margin: 9px 87px 0 48px;
+    }
+
+    label {
+      margin-bottom: 8px;
+
+      &:not(:last-of-type) {
+        margin-bottom: 17px;
+      }
+
+      &::before {
+        @include sizes(18px, 18px);
+      }
+    }
+  }
+
+  .filters__closed {
+    h3 {
+      padding-bottom: 35px;
+
+      &::after {
+        right: 39px;
+      }
+    }
+  }
+}
+
+@media (max-width: $max-mobile-width) {
+  .filters__form {
+    h3 {
+      padding: 25px 19px 23px;
+
+      &::after {
+        top: 33px;
+        right: 23px;
+      }
+    }
+
+    button {
+      margin: 29px 20px 0;
+
+      &:last-of-type {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  .filters__close-btn {
+    top: 60px;
+    transform: translateX(128px);
+  }
+
+  .filters__close-btn.modal__close-btn {
+    top: 55px;
+    right: -10px;
+  }
+
+
+  .filters__set {
+    &--product,
+    &--material,
+    &--collection {
+      margin: 0 30px 20px 30px;
+    }
+
+    &--price {
+      margin-left: 12px;
+      margin-right: 12px;
+    }
+  }
+
+  .filters__closed {
+    h3 {
+      &::after {
+        right: 19px;
+      }
+    }
+  }
+}

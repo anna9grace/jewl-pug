@@ -1,0 +1,91 @@
+extends ../base/layout
+
+block data
+  include ../data/catalog-data
+
+block variables
+  - var title = "Каталог"
+  - var wrapperMod = ""
+  - var hasHeader = true
+  - var headerMod = ""
+  - var hasFooter = true
+  - var footerMod = ""
+  - var currentPage = "1"
+
+block main
+  main
+    h1.visually-hidden Chjewellery's online store catalog
+    section.hero.hero--catalog
+      .hero__wrapper
+        h2 all jewellery
+        p Discover picks of fashion's finest trends in our jewellery catalog
+
+    section.catalog.container
+      a.btn.btn--dark.catalog__filters-btn(href="#", data-modal="filters") Filter
+      .catalog__filters.filters
+        .catalog__filters-overlay
+        form.filters__form(action="https://echo.htmlacademy.ru/", method="get")
+          fieldset
+            h3(tabindex="0") Product
+            .filters__set.filters__set--product
+              +input("checkbox", "necklaces", "necklaces", "Necklaces", true, false, true)
+              +input("checkbox", "chokers", "chokers", "Chokers", true, false, true)
+              +input("checkbox", "rings", "rings", "Rings", true, false, false)
+              +input("checkbox", "earrings", "earrings", "Earrings", true, false, true)
+
+          fieldset
+            h3(tabindex="0") Material
+            .filters__set.filters__set--material
+              +input("checkbox", "gold", "gold", "Gold", true, false, true)
+              +input("checkbox", "silver", "silver", "Silver", true, false, false)
+
+          fieldset
+            h3(tabindex="0") Collection
+            .filters__set.filters__set--collection
+              +input("checkbox", "pink-flamingo", "pink-flamingo", "Pink flamingo", true, false, true)
+              +input("checkbox", "dreams", "dreams", "Dreams", true, false, false)
+
+          fieldset
+            h3(tabindex="0") Price
+            .filters__set.filters__set--price.range-filter
+              .range-filter__scale
+                .range-filter__bar
+              .range-filter__toggle.range-filter__toggle--min(tabindex="0")
+                span $ 55
+              .range-filter__toggle.range-filter__toggle--max(tabindex="0")
+                span $ 155
+
+          button.btn.btn--dark(type="submit") Apply
+          button.btn(type="reset") Clear All
+        button.filters__close-btn(type="button")
+          //- +icon("icon_close", 25, 25)
+          span.visually-hidden Close filters
+
+
+      .catalog__list
+        ul
+          each product, index in catalogProducts
+            li
+              a.product(href="product-card.html")
+                +imgExtended(product.path, product.image, product.format, product.width, product.height, product.altText)
+                p= product.title
+                  span= product.price
+
+        .catalog__pagination.pagination
+          button.pagination__btn.pagination__btn--prev Previous
+          ul
+            li
+              a.current(href="#") 1
+            li
+              a(href="#") 2
+            li
+              a(href="#") 3
+            li
+              a(href="#") 4
+            li
+              a(href="#") 5
+          button.pagination__btn.pagination__btn--next Next
+
+block modals
+  +modal("modal--login")
+    +modal-login()

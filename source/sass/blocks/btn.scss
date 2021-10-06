@@ -1,0 +1,28 @@
+.btn {
+  @include font-sizes(16px, 21px);
+  padding: 23px 15px;
+  text-align: center;
+  font-weight: 500;
+  color: $main-color-dark;
+  background: none;
+  border: 1px solid $accent-color;
+  transition: background-color $default-transition-settings,
+    border-color $default-transition-settings,
+    opacity $default-transition-settings;
+
+  &:hover,
+  &:focus {
+    outline: none;
+    background-color: transparentize($accent-color, 0.4);
+    border-color: transparentize($accent-color, 0.4);
+  }
+
+  &:active {
+    opacity: 0.7;
+  }
+
+  &--dark {
+    color: $main-color-light;
+    background-color: $accent-color;
+  }
+}

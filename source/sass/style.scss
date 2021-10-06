@@ -17,9 +17,28 @@
 // Blocks
 //---------------------------------
 
-@import "blocks/header";
-@import "blocks/footer";
-@import "blocks/modal";
+@import "blocks/page.scss";
+@import "blocks/page-header.scss";
+@import "blocks/hero.scss";
+@import "blocks/new-in.scss";
+@import "blocks/slider.scss";
+@import "blocks/pagination.scss";
+@import "blocks/product.scss";
+@import "blocks/blog.scss";
+@import "blocks/questions.scss";
+@import "blocks/gallery.scss";
+@import "blocks/catalog.scss";
+@import "blocks/filters.scss";
+@import "blocks/range-filter.scss";
+@import "blocks/product-card.scss";
+@import "blocks/more-products.scss";
+@import "blocks/modal.scss";
+@import "blocks/added-to-cart.scss";
+@import "blocks/login-form.scss";
+@import "blocks/page-footer.scss";
+@import "blocks/subscribe.scss";
+@import "blocks/btn.scss";
+@import "blocks/mobile-menu.scss";
 
 
 // используйте это для отключения ховеров на тач устройствах
